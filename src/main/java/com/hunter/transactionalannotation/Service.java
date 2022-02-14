@@ -26,7 +26,7 @@ public class Service {
         }else if(param == 3) {
             record.setName(record.getName() + "C");
             em.persist(record);
-            throw new MyUnimportantException("Trowing my unimportant exception for no rollback"); //transaction manager will ignore this exception and won't rollback process
+            throw new MyUnimportantException("Throwing my unimportant exception for no rollback"); //transaction manager will ignore this exception and won't rollback process
         }
     }
 
