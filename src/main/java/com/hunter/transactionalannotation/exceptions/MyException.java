@@ -1,4 +1,4 @@
-package com.hunter.transactionalannotation;
+package com.hunter.transactionalannotation.exceptions;
 
 public class MyException extends Exception{
     public MyException(String message) {

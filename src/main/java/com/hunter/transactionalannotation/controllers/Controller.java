@@ -1,5 +1,7 @@
-package com.hunter.transactionalannotation;
+package com.hunter.transactionalannotation.controllers;
 
+import com.hunter.transactionalannotation.entities.Record;
+import com.hunter.transactionalannotation.services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +23,7 @@ public class Controller {
 
     @PostMapping("/saveRecord")
     public void saveRecord(@RequestBody Record record) {
-            for (int i = 1; i < 4; i++) {
+            for (int i = 1; i < 5; i++) {
                 try {
                     Record temp = new Record();
                     temp.setName(record.getName());
@@ -36,7 +38,7 @@ public class Controller {
     public void saveRecordExperimental(@RequestBody Record record) {
         try {
             service.saveRecordInOneTransactionExperimental(record);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -49,5 +51,4 @@ public class Controller {
             System.out.println(e.getMessage());
         }
     }
-
 }

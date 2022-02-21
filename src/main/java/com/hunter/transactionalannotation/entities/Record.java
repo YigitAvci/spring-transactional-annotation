@@ -1,4 +1,4 @@
-package com.hunter.transactionalannotation;
+package com.hunter.transactionalannotation.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
