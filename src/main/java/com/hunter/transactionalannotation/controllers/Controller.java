@@ -3,12 +3,14 @@ package com.hunter.transactionalannotation.controllers;
 import com.hunter.transactionalannotation.entities.Record;
 import com.hunter.transactionalannotation.services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/transactionalAnnotation")
@@ -50,5 +52,10 @@ public class Controller {
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @GetMapping("/getRecords")
+    public List<Record> getRecords() {
+        return service.getRecords();
     }
 }

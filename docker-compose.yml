@@ -1,0 +1,18 @@
+version: "3"
+services:
+  h2-db:
+    image: buildo/h2database
+    ports:
+      - "9092:9092"
+      - "8082:8082"
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: "jdbc:h2:tcp://h2-db/record-db;DB_CLOSE_DELAY=-1"
+      DB_USERNAME: "sa"
+      DB_PASSWORD: "as"
+    depends_on:
+      - h2-db

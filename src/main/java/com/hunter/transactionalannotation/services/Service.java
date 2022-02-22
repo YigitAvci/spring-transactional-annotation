@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @org.springframework.stereotype.Service
 public class Service {
@@ -47,7 +48,7 @@ public class Service {
         }
     }
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void saveRecordInOneTransactionExperimental(Record record) throws Exception {
         int random = (int) (Math.random() * (11));
         recordDataAccess.save(record);
@@ -66,6 +67,10 @@ public class Service {
         record.setName(record.getName() + " (without transaction annotation)");
         recordDataAccess.save(record);
         throw new SQLException("Throwing exception for rollback"); //even SQLException occurs record will be persisted
+    }
+
+    public List<Record> getRecords() {
+        return recordDataAccess.findAll();
     }
 
 }
